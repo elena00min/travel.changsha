@@ -1209,6 +1209,24 @@ const APPS=[
   render();
 })();
 
+// ===== layout switch: desktop (itinerary + map) / mobile (itinerary only) =====
+(function(){
+  const root=document.documentElement;
+  let saved=null;
+  try{saved=localStorage.getItem("cs_layout")}catch(e){}
+  let lay=(saved==="desk"||saved==="mob")?saved:(innerWidth<=860?"mob":"desk");
+  function apply(){
+    root.classList.toggle("lay-mob",lay==="mob");
+    document.querySelectorAll(".laysw button").forEach(b=>b.classList.toggle("on",b.dataset.lay===lay));
+    window.dispatchEvent(new Event("resize"));
+  }
+  document.querySelectorAll(".laysw button").forEach(b=>b.addEventListener("click",()=>{
+    lay=b.dataset.lay;
+    try{localStorage.setItem("cs_layout",lay)}catch(e){}
+    apply();
+  }));
+  apply();
+})();
 // ===== tab 5: metro map zoom / pan =====
 (function(){
   const st=document.getElementById("mstage"),wrap=document.getElementById("mwrap"),val=document.getElementById("mz-val");
