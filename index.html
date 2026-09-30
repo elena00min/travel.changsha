@@ -530,6 +530,58 @@ nav.tabs button[data-p="p5"][aria-selected="true"]{background:#eee6fa;border-bot
 .mpin b{position:absolute;left:14px;top:-22px;white-space:nowrap;font-size:13px;line-height:1.2;color:#111;background:#fff;border:1px solid #e5573d;border-radius:4px;padding:1px 6px}
 .mpin.alt{background:#7c4dbd;box-shadow:0 0 0 2px #7c4dbd}
 .mpin.alt b{border-color:#7c4dbd}
+/* ===== desktop: less side margin, more breathing room ===== */
+html:not(.lay-mob) .wrap{max-width:1500px;padding-left:24px;padding-right:24px}
+html:not(.lay-mob) .hero-info{max-width:1500px;padding-left:24px;padding-right:24px}
+html:not(.lay-mob) .planner{gap:36px}
+html:not(.lay-mob) .dtabs{padding:14px 18px;gap:8px}
+html:not(.lay-mob) .side .toggles{padding:16px 20px 0;gap:10px}
+html:not(.lay-mob) .sumbox{padding:20px 24px 8px}
+html:not(.lay-mob) .sumbox h2{margin:8px 0 6px}
+html:not(.lay-mob) .sline{margin:8px 0 10px;line-height:1.7}
+html:not(.lay-mob) .side .hint{padding:0 24px;margin:6px 0 10px}
+html:not(.lay-mob) .tl{padding:8px 0 24px}
+html:not(.lay-mob) .trow{grid-template-columns:64px 34px minmax(0,1fr);gap:10px;padding:0 24px 0 16px}
+html:not(.lay-mob) .card-i{padding:16px 18px;margin:12px 0 16px;border-radius:12px}
+html:not(.lay-mob) .card-i h3{margin:0 0 4px;line-height:1.4}
+html:not(.lay-mob) .card-i .desc,html:not(.lay-mob) .desc{line-height:1.75;margin-top:6px}
+html:not(.lay-mob) .durl{margin:6px 0 4px}
+html:not(.lay-mob) .card-i .eat{margin-top:12px;padding:12px 16px;line-height:1.7}
+html:not(.lay-mob) .trow.mv .bd{padding:10px 16px;margin:8px 0 10px;line-height:1.65}
+html:not(.lay-mob) .trow .tm{padding-top:20px}
+html:not(.lay-mob) .trow.mv .tm{padding-top:14px}
+html:not(.lay-mob) .dot{margin-top:18px}
+html:not(.lay-mob) .dot.sm{margin-top:24px}
+html:not(.lay-mob) .ovc{margin:12px 20px;padding:14px 16px;width:calc(100% - 40px)}
+html:not(.lay-mob) .mapcol .mctl{margin-bottom:12px}
+html:not(.lay-mob) .mapcol .mnote{margin:12px 0}
+html:not(.lay-mob) .mfoot{gap:8px 18px}
+html:not(.lay-mob) .card{padding:22px 0 34px}
+html:not(.lay-mob) .card li{margin:8px 0;line-height:1.75}
+html:not(.lay-mob) #p1 .lead,html:not(.lay-mob) .panel .lead{line-height:1.8;margin-bottom:28px}
+/* ===== date buttons: full width above itinerary + map, no scrollbar ===== */
+.dtabs,html:not(.lay-mob) .dtabs,html.lay-mob .dtabs{display:flex;flex-wrap:wrap;overflow:visible;position:static;background:none;z-index:auto;gap:8px;padding:4px 0 16px;margin:0 0 18px;border-bottom:1px solid var(--line)}
+.dtabs button,html:not(.lay-mob) .dtabs button,html.lay-mob .dtabs button{flex:0 0 auto;min-width:84px;padding:8px 14px}
+html.lay-mob .dtabs{gap:6px;padding:2px 0 12px;margin:0 0 12px}
+html.lay-mob .dtabs button{min-width:0;flex:1 1 calc(20% - 6px);padding:6px 4px}
+/* ===== date buttons stay pinned under the tab bar ===== */
+.dtabs,html:not(.lay-mob) .dtabs,html.lay-mob .dtabs{position:sticky;top:var(--navh,56px);z-index:8;background:var(--bg);padding:10px 0 12px;margin:0 0 14px;box-shadow:0 8px 8px -8px rgba(0,0,0,.12)}
+html:not(.lay-mob) .mapcol{top:calc(var(--stick,130px) + 10px)}
+html:not(.lay-mob) .side{max-height:calc(100vh - var(--stick,130px) - 24px)}
+html.lay-mob .dtabs{padding:6px 0 8px;margin:0 0 8px}
+/* ===== no horizontal scroll in itinerary + light scrollbars ===== */
+.side{overflow-x:hidden}
+.side,.side *{min-width:0}
+.side .bd,.side .desc,.side .eat,.side h3,.side .sline,.side .tags,.side .ovb{overflow-wrap:anywhere;word-break:break-word}
+.side .trow{max-width:100%}
+.side .toggles{flex-wrap:wrap}
+html{scrollbar-color:#d6d2c6 #f3f1ea;scrollbar-width:thin}
+*{scrollbar-color:#d6d2c6 #f3f1ea;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#f3f1ea}
+::-webkit-scrollbar-thumb{background:#d6d2c6;border-radius:8px;border:2px solid #f3f1ea}
+::-webkit-scrollbar-thumb:hover{background:#c5c0b0}
+::-webkit-scrollbar-corner{background:#f3f1ea}
 </style>
 </head>
 <body>
@@ -597,9 +649,9 @@ nav.tabs button[data-p="p5"][aria-selected="true"]{background:#eee6fa;border-bot
 <section class="panel on" id="p1">
   <div class="laysw top" role="group" aria-label="切換版面">版面：<button type="button" data-lay="desk">桌機版面</button><button type="button" data-lay="mob">手機版面</button></div>
   <p class="lead">黑色「時長」標籤＝停留或移動時間。<b>黃色列是通勤</b>：<span class="mode">地鐵</span>優先，預估地鐵（含步行、轉乘）超過 40 分鐘的改為<span class="mode taxi">打車</span>；往返機場另計。<b>最近地鐵站：4 號線平陽站</b>（已確認）。換乘站黃土嶺（4 號線接 1 號線）、五一廣場（1、2 號線）也已查證，<b>各段分鐘數是我依路線估算</b>，出發前請用騰訊地圖或高德確認。餐廳為網路常見推薦，營業與價位以大眾點評為準。</p>
+  <div class="dtabs" id="dtabs" role="tablist" aria-label="選擇日期"></div>
   <div class="planner" id="planner">
     <aside class="side" id="side">
-      <div class="dtabs" id="dtabs" role="tablist" aria-label="選擇日期"></div>
       <div class="toggles">
         <label class="tg"><input type="checkbox" id="tgEat" checked>🍜 餐廳推薦</label>
         <label class="tg"><input type="checkbox" id="tgMove" checked>🚇 通勤</label>
@@ -641,6 +693,7 @@ nav.tabs button[data-p="p5"][aria-selected="true"]{background:#eee6fa;border-bot
       <tr><td><b>杜甫江閣／湘江風光帶</b>（10/8）</td><td>免費</td><td>免預約。</td></tr>
       <tr><td><b>開福寺</b>（10/9）</td><td>請以現場或大眾點評為準</td><td><span class="last">最晚：當天出發前</span><br>先查開放時間與是否需要預約；寺內請保持安靜，拍照前先看標示。</td></tr>
       <tr><td><b>長沙 IFS 國金中心</b>（10/9）</td><td>免費（商場）</td><td><span class="last">免預約</span><br>營業時間以現場為準；大熊貓雕塑在商場外。</td></tr>
+      <tr><td><b>東陵集印社（太平老街）</b>（10/11）</td><td>依石材與字數而定（我沒有查證）</td><td><span class="last">當天 14:30 一到就先去下單</span><br>刻章通常要 30–40 分鐘或更久，先選石材、確認要刻的詩句或名字，再去逛街等待。</td></tr>
       <tr><td><b>機票／證件</b></td><td>已訂</td><td><span class="last">10/12 晚上前</span><br>確認電子行程、台胞證、行李重量。</td></tr>
     </table></div>
   </div>
@@ -786,14 +839,16 @@ const days=[
  ["18:30–19:05","湖南大學 → 家","35 分","湖南大學站搭 4 號線（往杜家坪方向）坐 10 站直達平陽站，不需轉乘。預估約 30–35 分。","move",M],
  ["19:05","回到朋友家","","洗澡休息，早點睡。",""]]},
 
-{id:"d7",n:"07",date:"10/11（日）",t:"橘子洲・都正街・南門口宵夜",tags:["#橘子洲","#都正街","#南門口宵夜"],rows:[
- ["11:15–11:55","平陽站 → 橘子洲","40 分","平陽站搭 4 號線（往罐子嶺方向）坐 2 站到沙灣公園站，換乘 2 號線（往梅溪湖西方向）坐 11 站到橘子洲站。共 13 站，預估 35–40 分。","move",M],
- ["12:00–15:00","橘子洲：搭小火車看雕像","3 小時","中午入園，避開人群搭小火車看雕像；想避開正午太陽，也可以推遲到 13:00 出門。請先在微信預約入園，小火車來回票約 40 元。","","",["洲上簡餐為主，建議午餐先吃再來","橘子洲站 2 號出口周邊：一般連鎖簡餐"]],
- ["15:00–15:30","橘子洲 → 都正街","30 分","橘子洲站搭 2 號線（往光達方向）坐 3 站（湘江中路、五一廣場、芙蓉廣場）到芙蓉廣場站，再步行進都正街。","move",M],
- ["15:30–17:30","都正街：精緻安靜的歷史老街","2 小時","找家茶舖喝茶歇腳，順便展示前幾天買的戰利品。","","",["都正街內的古風茶舖（以現場為準）"]],
- ["17:30–17:50","都正街 → 南門口","20 分","從都正街步行或搭地鐵到南門口：芙蓉廣場站搭 2 號線 1 站到五一廣場站，換 1 號線（往尚雙塘方向）坐 2 站到南門口站。你寫「搭 1 站地鐵」，依地鐵圖至少要 3 站。","move",M],
- ["17:50–21:00","南門口：市井宵夜","3 小時 10 分","入夜後的南門口長郡中學後巷才是本色，橫掃炒碼粉、炸串。","","",["金玲粉店（老字號炒碼粉）","文廟坪炸炸炸（在地炸串）","紫蘇桃子薑（酸甜解膩，配臭豆腐是絕配）"]],
- ["21:00–21:35","南門口 → 家","35 分","南門口站搭 1 號線（往尚雙塘方向）坐 3 站到黃土嶺站，換 4 號線（往杜家坪方向）坐 7 站到平陽站，共 10 站，預估 35–40 分。你寫經五一廣場轉 2 號線，要往北再繞，比較遠。","move",M],
+{id:"d7",n:"07",date:"10/11（日）",t:"橘子洲・太平老街刻印章・都正街・南門口",tags:["#橘子洲","#太平老街","#刻印章","#都正街","#南門口宵夜"],rows:[
+ ["11:15–11:55","平陽站 → 橘子洲","40 分","平陽站搭 4 號線（往罐子嶺方向）坐 2 站到沙灣公園站，換乘 2 號線（往梅溪湖西方向）坐 11 站到橘子洲站。共 13 站，依地鐵圖計算，預估 35–40 分。你寫經長沙火車南站轉 2 號線，也到得了，但要多繞。","move",M],
+ ["12:00–14:15","橘子洲（錯峰快閃）：小火車、毛主席雕像","2 小時 15 分","搭景區小火車，直奔毛主席雕像打卡、拍照。10/7 連假已結束，這時人潮少很多。請先在微信預約入園。","","",["洲上簡餐為主，建議午餐先吃再來","橘子洲站 2 號出口周邊：一般連鎖簡餐"]],
+ ["14:15–14:30","橘子洲 → 太平老街","15 分","橘子洲站搭 2 號線（往光達方向）坐 1 站到湘江中路站下車，再步行進太平老街。你寫步行 3 分鐘，我依位置估約 10 分鐘。","move",M],
+ ["14:30–16:15","太平老街：東陵集印社，訂製伴手禮","1 小時 45 分","一進老街就先去東陵集印社：慢慢挑石頭材質，跟店員確認想刻的詩句或名字，把印章留給師傅刻（通常要 30–40 分鐘或更久），你就完全放空，在老街邊漫步、喝一杯茶顏悅色、逛文創店。逛完走回來拿刻好的成品。店家、價格與刻章時間是你提供的，我沒有查證，建議先用大眾點評確認營業時間。","","",["茶顏悅色（太平老街周邊有店，用小程序預點更快）","黑色經典臭豆腐（太平街一帶，長沙代表小吃）"]],
+ ["16:15–16:30","太平老街 → 都正街","15 分","從太平老街回湘江中路站，搭 2 號線（往光達方向）坐 2 站（經過五一廣場）到芙蓉廣場站，再步行走進都正街。你寫的搭乘站數與依地鐵圖相同。","move",M],
+ ["16:30–18:15","都正街：清幽喝茶時光","1 小時 45 分","這條歷史老街保存了古城牆古蹟，比太平老街更安靜、精緻。挑一家古風茶舖坐下，喝長沙在地的茶，端詳剛剛在集印社客製的專屬印章，很有度假的儀式感。","","",["都正街內的古風茶舖（以現場為準）"]],
+ ["18:15–18:30","都正街 → 南門口","15 分","慢悠悠散步，或搭地鐵：芙蓉廣場站搭 2 號線 1 站到五一廣場站，換 1 號線（往尚雙塘方向）坐 2 站到南門口站。你寫「搭 1 站地鐵」，依地鐵圖至少要 3 站，建議走路或搭車。","move",M],
+ ["18:30–21:00","南門口：市井老饕宵夜","2 小時 30 分","入夜後是南門口的黃金時段，去金玲粉店吃碗暖呼呼的炒碼粉，或買文廟坪炸串、紫蘇桃子薑，用老長沙人的深夜煙火氣結束這一天。","","",["金玲粉店（老字號炒碼粉）","文廟坪炸炸炸（在地炸串）","紫蘇桃子薑（酸甜解膩，配臭豆腐是絕配）"]],
+ ["21:00–21:35","南門口 → 家","35 分","南門口站搭 1 號線（往尚雙塘方向）坐 3 站到黃土嶺站，換 4 號線（往杜家坪方向）坐 7 站到平陽站，共 10 站，預估 35–40 分。你寫經五一廣場、長沙火車南站，要往北再繞，比較遠。","move",M],
  ["21:35","回到朋友家","","洗澡休息。",""]]},
 
 {id:"d8",n:"08",date:"10/12（一）",t:"自由放鬆日・頂級足浴",tags:["#休息","#足浴","#整理行李"],rows:[
@@ -990,7 +1045,7 @@ const APPS=[
    d4:[[0,"home"],[2,"wenheyou"],[5,"dufu"],[8,"home"]],
    d5:[[null,"home"],[1,"museum"],[3,"kaifusi"],[5,"ifs"],[7,"home"]],
    d6:[[null,"home"],[1,"yuelu"],[5,"home"]],
-   d7:[[null,"home"],[1,"juzi"],[5,"nanmenkou"],[7,"home"]],
+   d7:[[null,"home"],[1,"juzi"],[3,"taiping"],[7,"nanmenkou"],[9,"home"]],
    d8:[[0,"home"]],
    d9:[[0,"home"],[2,"airport"]]
   };
@@ -1246,6 +1301,26 @@ const APPS=[
   wrap.addEventListener("pointermove",e=>{if(!d)return;wrap.scrollLeft=d.l-(e.clientX-d.x);wrap.scrollTop=d.t-(e.clientY-d.y)});
   const end=()=>{d=null;wrap.classList.remove("drag")};
   wrap.addEventListener("pointerup",end);wrap.addEventListener("pointercancel",end);
+})();
+// ===== sticky offsets for the pinned date buttons =====
+(function(){
+  const root=document.documentElement;
+  function measure(){
+    const nav=document.querySelector("nav.tabs"),dt=document.getElementById("dtabs");
+    if(!nav)return;
+    const nh=nav.offsetHeight;
+    root.style.setProperty("--navh",nh+"px");
+    const dh=(dt&&dt.offsetParent!==null)?dt.offsetHeight:0;
+    root.style.setProperty("--stick",(nh+dh)+"px");
+  }
+  ["resize","load"].forEach(e=>addEventListener(e,measure));
+  document.querySelectorAll("nav.tabs button,.laysw button").forEach(el=>el.addEventListener("click",()=>setTimeout(measure,120)));
+  if(window.ResizeObserver){
+    const dt=document.getElementById("dtabs"),nv=document.querySelector("nav.tabs");
+    if(dt)new ResizeObserver(measure).observe(dt);
+    if(nv)new ResizeObserver(measure).observe(nv);
+  }
+  measure();setTimeout(measure,300);
 })();
 </script>
 
